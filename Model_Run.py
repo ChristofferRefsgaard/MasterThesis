@@ -323,12 +323,12 @@ print('defining model')
 #Definér loss-funktionen: https://codeburst.io/neural-networks-for-algorithmic-trading-volatility-forecasting-and-custom-loss-functions-c030e316ea7e
 #Loss funktionen skal skrives med Keras backend, når den skal burges i keras/tensorflow netværkene senere.
 def stock_loss(y_true, y_pred):
-alpha = 2.
-loss = K.switch(K.less(y_true * y_pred, 0), \
-alpha * (K.abs(y_true) + K.abs(y_pred)), \
-K.abs(y_true - y_pred)
-)
-return K.mean(loss, axis=-1)
+    alpha = 2.
+    loss = K.switch(K.less(y_true * y_pred, 0), \
+        alpha * (K.abs(y_true) + K.abs(y_pred)), \
+        K.abs(y_true - y_pred)
+        )
+    return K.mean(loss, axis=-1)
 
 #Tilføj række for bias i embedding matricen
 newrow = np.array([np.zeros(embed_size)])
